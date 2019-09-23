@@ -1,0 +1,73 @@
+﻿@page
+
+@model SignalRWebApp.Pages.IndexModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col-6">&nbsp;</div>
+            <div class="col-6">
+                User..........<input type="text" id="userInput" />
+                <br />
+                Message...<input type="text" id="messageInput" />
+                <input type="button" id="sendButton" value="Send Message" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">&nbsp;</div>
+            <div class="col-6">
+                <ul id="messagesList"></ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        <input type="button" onclick="openwindows()" value="click here" />
+    </div>
+    <script src="~/dist/browser/signalr.min.js"></script>
+
+    <script src="~/js/chat.js"></script>
+</body>
+</html>
+
+<script>
+
+    function openwindows(url = 'http://localhost:58352/api/demo/getlist'/*, data = {}*/) {
+        // Default options are marked with *
+        return fetch(url, {
+            method: 'GET', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'application/json',
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrer: 'no-referrer'//, // no-referrer, *client
+            //body: JSON.stringify(data), // body data type must match "Content-Type" header
+        })
+            .then(response => response.json());
+    }
+</script>
+
+
